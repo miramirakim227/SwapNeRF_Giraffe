@@ -153,6 +153,7 @@ class Trainer(BaseTrainer):
         loss_recon = self.recon_loss(x_fake, x_real[0].to(self.device)) * self.recon_weight
         loss_new = self.recon_loss(x_fake2, x_real[1].to(self.device)) * self.recon_weight
 
+        # for gan loss training -> 157번 주석 해제, 158번 주석 처리 
         # gen_loss = (loss_new + loss_recon)/2 + gloss_swap
         gen_loss = (loss_new + loss_recon)/2 
 
