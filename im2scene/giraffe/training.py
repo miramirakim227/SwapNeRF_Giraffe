@@ -83,6 +83,7 @@ class Trainer(BaseTrainer):
             it (int): training iteration
         '''
         loss_gen, loss_recon, loss_recon2, swap_g = self.train_step_generator(data, it)
+        # gan training: discriminator에 해당하는 밑에 주석들 해제 
         # loss_d, reg_d, real_d, swap_d = self.train_step_discriminator(data, it)
 
         return {
@@ -153,7 +154,7 @@ class Trainer(BaseTrainer):
         loss_recon = self.recon_loss(x_fake, x_real[0].to(self.device)) * self.recon_weight
         loss_new = self.recon_loss(x_fake2, x_real[1].to(self.device)) * self.recon_weight
 
-        # for gan loss training -> 157번 주석 해제, 158번 주석 처리 
+        # gan training -> 157번 주석 해제, 158번 주석 처리 
         # gen_loss = (loss_new + loss_recon)/2 + gloss_swap
         gen_loss = (loss_new + loss_recon)/2 
 
